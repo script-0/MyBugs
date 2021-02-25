@@ -27,7 +27,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import models.Bug;
+import models.entities.BugEntity;
 import App.MyBugs;
 
 /**
@@ -355,9 +355,9 @@ public class AppDesignController implements Initializable {
                 resultBox.setAlignment(Pos.CENTER);
              */
             MyBugs.bugs.clear();
-            Bug bug1, bug2;
-            bug1 = new Bug(1, query + "0", new Date(), "Solution1", true);
-            bug2 = new Bug(20, query + "1", new Date(), "", false);
+            BugEntity bug1, bug2;
+            bug1 = new BugEntity(1, query + "0", "Solution1", true);
+            bug2 = new BugEntity(20, query + "1", "", false);
             MyBugs.bugs.addAll(bug1, bug2);
             initPagination();
         }

@@ -18,7 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
-import models.Bug;
+import models.entities.BugEntity;
 
 /**
  *
@@ -32,7 +32,7 @@ public class MyBugs extends Application {
 
     public static double dx, dy;
 
-    public static ObservableList<Bug> bugs = FXCollections.observableArrayList();
+    public static ObservableList<BugEntity> bugs = FXCollections.observableArrayList();
 
     Scene mainApp;
     SplashController controller;

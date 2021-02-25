@@ -22,7 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import models.Bug;
+import models.entities.BugEntity;
 
 /**
  *
@@ -48,7 +48,7 @@ public class BugController implements Initializable {
     @FXML
     private Label bugLabel;
 
-    private Bug bugData;
+    private BugEntity bugData;
 
     /*public static BugDetailsController bugDetailsControl = null;
 
@@ -59,10 +59,10 @@ public class BugController implements Initializable {
 
     }
 
-    public void loadBug(Bug bug) {
+    public void loadBug(BugEntity bug) {
         this.bugData = bug;
         setBugLabel(bug.getLabel());
-        setLabelDate(bug.getDate());
+        setLabelDate(bug.getCreationDate());
         if (bug.isResolved()) {
             checkBug.getStyleClass().add("resolved");
         }

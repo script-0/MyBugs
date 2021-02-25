@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import models.Bug;
+import models.entities.BugEntity;
 
 /**
  * FXML Controller class
@@ -91,7 +91,7 @@ public class BugDetailsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
-    public void loadBug(Bug bug) {
+    public void loadBug(BugEntity bug) {
         this.labelTextField.setText(bug.getLabel());
         this.solutionArea.setText(bug.getSolution());
         this.isResolved.setSelected(bug.isResolved());

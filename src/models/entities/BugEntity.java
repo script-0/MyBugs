@@ -3,28 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package models.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import java.io.Serializable;
 import java.util.Date;
-
 /**
  *
  * @author Isaac
  */
-public class Bug {
-
+public class BugEntity implements Serializable{
     private long id;
+    
     private String label;
-    private Date date;
+    
+    private Date creationDate;
+    
+    private Date lastUpdateDate;
+    
     private String solution;
+    
     private boolean resolved;
+    
+    private Set<BugFile> files= new HashSet<>();
 
-    public Bug(long id, String label, Date date, String solution, boolean resolved) {
+    public BugEntity(long id, String label, String solution, boolean resolved) {
         this.id = id;
         this.label = label;
-        this.date = date;
         this.solution = solution;
         this.resolved = resolved;
+    }
+
+    public BugEntity() {
     }
 
     public long getId() {
@@ -43,12 +55,16 @@ public class Bug {
         this.label = label;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Date getLastUpdateDate() {
+        return lastUpdateDate;
     }
 
     public String getSolution() {
@@ -67,5 +83,11 @@ public class Bug {
         this.resolved = resolved;
     }
 
-    
+    public Set<BugFile> getFiles() {
+        return files;
+    }
+
+    public void setFiles(Set<BugFile> files) {
+        this.files = files;
+    }    
 }
