@@ -28,7 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import models.Bug;
-import models.MyBugs;
+import App.MyBugs;
 
 /**
  *
@@ -158,11 +158,11 @@ public class AppDesignController implements Initializable {
             today.setText(newValue.toString());
         });
 
-        models.MyBugs.stars.add(star1);
-        models.MyBugs.stars.add(star2);
-        models.MyBugs.stars.add(star3);
-        models.MyBugs.stars.add(star4);
-        models.MyBugs.stars.add(star5);
+        App.MyBugs.stars.add(star1);
+        App.MyBugs.stars.add(star2);
+        App.MyBugs.stars.add(star3);
+        App.MyBugs.stars.add(star4);
+        App.MyBugs.stars.add(star5);
 
         searchText.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals("")) {
@@ -293,7 +293,7 @@ public class AppDesignController implements Initializable {
     void starClicked(MouseEvent e) {
         boolean flag = false;
         FontAwesomeIconView starClicked = (FontAwesomeIconView) e.getSource();
-        for (FontAwesomeIconView s : models.MyBugs.stars) {
+        for (FontAwesomeIconView s : App.MyBugs.stars) {
             s.setGlyphName(flag ? "STAR_ALT" : "STAR");
             if (s.equals(starClicked)) {
                 flag = true;

@@ -1,4 +1,4 @@
-package models;
+package App;
 
 import controllers.SplashController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import models.Bug;
 
 /**
  *
