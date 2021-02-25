@@ -171,7 +171,7 @@
     <bottom>
         <AnchorPane fx:id="footer" styleClass="footer">
             <children>
-                <Label fx:id="buildNumber" contentDisplay="RIGHT" layoutX="512.0" layoutY="5.0" onMouseClicked="#showBuildPane" styleClass="buildText" text="Build 0.0-08-20" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Label fx:id="buildNumber" contentDisplay="RIGHT" layoutX="512.0" layoutY="5.0" onMouseClicked="#showBuildPane" styleClass="buildText" text="Build 0.25-02-20" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <graphic>
                         <FontAwesomeIconView fx:id="buildNbIcon" blendMode="OVERLAY" fill="WHITE" glyphName="CREATIVE_COMMONS" size="21" styleClass="icons" />
                     </graphic>

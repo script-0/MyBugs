@@ -36,6 +36,15 @@ public class BugEntity implements Serializable{
         this.resolved = resolved;
     }
 
+    public BugEntity(long id, String label, String solution, Date creationDate, Date lastUpdateDate, boolean resolved) {
+        this.id = id;
+        this.label = label;
+        this.creationDate = creationDate;
+        this.lastUpdateDate = lastUpdateDate;
+        this.solution = solution;
+        this.resolved = resolved;
+    }
+
     public BugEntity() {
     }
 

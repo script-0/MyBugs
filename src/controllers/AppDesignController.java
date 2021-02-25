@@ -29,6 +29,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import models.entities.BugEntity;
 import App.MyBugs;
+import models.services.BugServices;
 
 /**
  *
@@ -145,6 +146,8 @@ public class AppDesignController implements Initializable {
 
     double menuWidth, menuHeight;
 
+    BugServices bugServices;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -194,6 +197,7 @@ public class AppDesignController implements Initializable {
             Logger.getLogger(AppDesignController.class.getName()).log(Level.SEVERE, null, ex);
             //Loading of Menu Interface failed
         }
+        bugServices = new BugServices();
     }
 
     boolean isMaximized = false;
@@ -346,6 +350,7 @@ public class AppDesignController implements Initializable {
     void search(KeyEvent e) {
         if (e.getCode() == KeyCode.ENTER) {
 
+            log.setText("Searching for bug ...");
             System.out.println("Key ENTER Typed");
             String query = searchText.getText();
             //Interrogate DB.
@@ -355,11 +360,20 @@ public class AppDesignController implements Initializable {
                 resultBox.setAlignment(Pos.CENTER);
              */
             MyBugs.bugs.clear();
-            BugEntity bug1, bug2;
+            /*BugEntity bug1, bug2;
             bug1 = new BugEntity(1, query + "0", "Solution1", true);
             bug2 = new BugEntity(20, query + "1", "", false);
-            MyBugs.bugs.addAll(bug1, bug2);
-            initPagination();
+
+            MyBugs.bugs.addAll(bug1, bug2);*/
+            MyBugs.bugs.addAll(bugServices.search(query));
+            resultBox.getChildren().clear();
+            if(MyBugs.bugs.size() == 0){
+                resultBox.getChildren().add(placeHolderSearchBox);
+                resultBox.setAlignment(Pos.CENTER);                
+            }else{
+                initPagination();
+            }
+            log.setText("All traitements are done");
         }
     }
 

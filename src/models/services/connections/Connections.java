@@ -27,7 +27,7 @@ public class Connections {
                 Class.forName("org.postgresql.Driver");
                 conPostgres =DriverManager.getConnection(POSTGRES,USER,PASSWORD);
             }
-            System.out.println("[Connected to Datbabase]");
+            System.out.println("[Connected to Database]");
             return conPostgres;
 	}catch(Exception e){
             System.out.println("[Can't connect to Database]\n"+e);

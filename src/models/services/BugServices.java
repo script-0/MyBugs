@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
+import models.entities.BugEntity;
 /**
  *
  * @author Isaac
@@ -30,6 +33,34 @@ public class BugServices {
             return rowsAffected;
 	}catch(SQLException e){
             throw e;
+        }
+    }
+    
+    public Set<BugEntity> search(String label){
+        Connection con = Connections.getPostgresConnection();
+        try{
+            Statement stmt = con.createStatement();
+            //Check label format : SQL Injection
+            String insertSql = "SELECT * FROM bug WHERE UPPER(label) LIKE ?";
+            PreparedStatement pstmt = con.prepareStatement(insertSql);
+            pstmt.setString(1,"%"+label.toUpperCase()+"%");
+            Set<BugEntity> bugs = new HashSet<>();
+            pstmt.execute();
+            while(pstmt.getResultSet().next()){
+                bugs.add(new BugEntity(pstmt.getResultSet().getLong("id"),
+                                        pstmt.getResultSet().getString("label"),
+                                        pstmt.getResultSet().getString("solution"),
+                                        pstmt.getResultSet().getDate("creationdate"),
+                                        pstmt.getResultSet().getDate("lastupdatedate"),
+                                        pstmt.getResultSet().getBoolean("resolved"))
+                );
+            }
+            System.out.println("[PostgreSql : SELECT -> bug]: "+bugs.size()+" rows affected");
+            return bugs;
+	}catch(SQLException e){
+           // throw e;
+           System.out.println("[Error : BugServices]");
+           return new HashSet<BugEntity>();
         }
     }
 }
