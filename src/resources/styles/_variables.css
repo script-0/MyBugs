@@ -1,0 +1,16 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 22, 2020, 1:05:46 AM
+    Author     : Isaac
+*/
+
+*{
+    -fx-first-color:#455a64; /*radial-gradient(radius 190%,#203A43,#4286f4,#4286f4); /*#2A384D;#0F2027, #2C5364*/
+    -fx-second-color: #ffffff;
+    -fx-third-color: derive(-fx-first-color,55%); /*#37474f;*/
+    -fx-forth-color:#115680;/*derive(-fx-first-color,30%);/*#37474f;*/
+}

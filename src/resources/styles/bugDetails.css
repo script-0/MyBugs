@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 12, 2020, 6:17:53 PM
+    Author     : Isaac
+*/
+
+@import "_variables.css";
+@import "icons.css";
+
+.rootPane{
+    -fx-background-radius:1em;
+    -fx-border-radius:1.1em;
+}
+
+.titleBar{
+    -fx-background-color: -fx-first-color;
+}
+
+.fieldLabel{
+    -fx-arc-height:30px ;
+    -fx-arc-width: 30px;
+    -fx-fill: -fx-first-color;
+    -fx-stroke: transparent;
+}
+
+.fieldLabelText{
+    -fx-text-fill: -fx-second-color;
+    -fx-font-size: 15px;
+}
+
+.labelTextField{
+    -fx-background-radius: 2em;
+    -fx-border-radius:2em;
+    -fx-font-size: 12px;
+}
+
+.saveButton{
+    -fx-background-color:-fx-first-color;
+    -fx-text-fill: -fx-second-color;
+    -fx-background-radius: 1.5em;
+    -fx-border-radius: 1.5em;
+}
+
+.cancelButton{
+    -fx-border-color:-fx-first-color;
+    -fx-background-color:-fx-second-color;
+    -fx-text-fill: -fx-first-color;
+    -fx-background-radius: 1.5em;
+    -fx-border-radius: 1.5em;    
+}
+
+.designCircle{
+    -fx-fill:derive(-fx-first-color,80%);
+    -fx-stroke:transparent;
+}
+
+.solutionArea{
+    -fx-background-radius: 1.5em;
+    -fx-border-radius: 1.5em;
+    -fx-font-size:14px;    
+}

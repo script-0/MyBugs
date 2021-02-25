@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="534.0" prefWidth="650.0" scaleShape="false" style="-fx-background-color: #ffffff;" stylesheets="@../resources/styles/default.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AppDesignController">
+    <top>
+        <AnchorPane fx:id="header" onMouseDragged="#mouseDragged" onMousePressed="#mousePressed" onMouseReleased="#mouseReleased" styleClass="header" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="today" alignment="CENTER_RIGHT" layoutX="420.0" layoutY="2.0" onMouseClicked="#showDatePane" prefHeight="30.0" prefWidth="121.0" styleClass="today" text="20-08-2020" textFill="WHITE" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="2.0">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIconView fx:id="todayIcon" fill="WHITE" glyphName="CALENDAR_ALT" size="20" styleClass="icons" />
+                    </graphic>
+                </Label>
+                <FontAwesomeIconView fx:id="minimize" fill="WHITE" glyphName="MINUS" layoutX="537.0" layoutY="24.0" onMouseClicked="#minimize" size="16" styleClass="icons" AnchorPane.rightAnchor="80.0">
+              
+                </FontAwesomeIconView>
+                <FontAwesomeIconView fx:id="expand" fill="#f2e6e6" glyphName="SQUARE_ALT" layoutX="567.0" layoutY="26.0" onMouseClicked="#maximize" size="23" styleClass="icons" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="6.0">
+              
+                </FontAwesomeIconView>
+                <FontAwesomeIconView fx:id="close" fill="WHITE" glyphName="CLOSE" layoutX="627.5714263916016" layoutY="25.428571701049805" onMouseClicked="#exit" onMouseEntered="#closeIcon" onMouseExited="#closeIcon" size="25" styleClass="icons" AnchorPane.rightAnchor="13.785717010498047" AnchorPane.topAnchor="4.0">
+              
+                </FontAwesomeIconView>
+                <FontAwesomeIconView fx:id="info" blendMode="OVERLAY" fill="WHITE" glyphName="BARS" layoutX="8.0" layoutY="25.571428298950195" onMouseClicked="#showInfoPane" size="24" styleClass="icons" AnchorPane.bottomAnchor="4.53125" AnchorPane.topAnchor="5.0">
+               
+                </FontAwesomeIconView>
+                <FontAwesomeIconView fx:id="connectState" fill="WHITE" glyphName="CIRCLE" layoutX="363.0" layoutY="26.0" size="23" styleClass="icons" AnchorPane.rightAnchor="247.0">
+             
+                </FontAwesomeIconView>
+                <JFXButton fx:id="addBug" accessibleText="Add Bug" blendMode="OVERLAY" cache="true" cacheHint="QUALITY" defaultButton="true" layoutX="174.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" styleClass="addButton" text="Add a Bug" textFill="WHITE" AnchorPane.rightAnchor="391.0">
+                    <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="15" styleClass="icons" />
+                    </graphic>
+                </JFXButton>
+            <Text fill="#f2f2f2" layoutX="323.0" layoutY="22.0" strokeType="OUTSIDE" text="Server is Up" AnchorPane.rightAnchor="269.87060546875">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            </children>
+         <effect>
+            <DropShadow />
+         </effect>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane fx:id="center" style="-fx-background-color: #dedede;" BorderPane.alignment="CENTER">
+            <children>
+            <Pagination fx:id="pagination" currentPageIndex="3" layoutY="49.0" maxPageIndicatorCount="5" pageCount="1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="55.0" />
+                <TextField fx:id="searchText" layoutX="37.0" layoutY="13.0" onKeyReleased="#search" onMouseClicked="#searchPaneAnimation" prefHeight="33.0" prefWidth="552.0" promptText="Search for a bug" styleClass="searchPane" AnchorPane.leftAnchor="435.0" AnchorPane.rightAnchor="40.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <padding>
+                        <Insets left="35.0" right="30.0" />
+                    </padding>
+                </TextField>
+                <FontAwesomeIconView fx:id="searchIcon" fill="#545454" glyphName="SEARCH" layoutX="42.0" layoutY="38.0" onMouseClicked="#searchPaneAnimation" size="25" styleClass="searchPaneIcon" wrappingWidth="12.0" AnchorPane.leftAnchor="442.0" />
+                <FontAwesomeIconView fx:id="cancelSearch" fill="#545454" glyphName="CLOSE" layoutX="562.0" layoutY="37.0" onMouseClicked="#clearBugSearch" size="25" styleClass="searchPaneIcon" AnchorPane.rightAnchor="48.0">
+              
+                </FontAwesomeIconView>
+                <VBox fx:id="resultBox" alignment="CENTER" focusTraversable="true" layoutX="13.0" layoutY="56.0" spacing="3.0" styleClass="resultBox" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="56.0">
+               <children>
+                  <ImageView fx:id="placeHolderSearchBox" cache="true" cacheHint="QUALITY" depthTest="DISABLE" fitHeight="392.0" fitWidth="432.0" focusTraversable="true" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER">
+                     <image>
+                        <Image url="@../resources/images/Artboard-1.png" />
+                     </image>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </children>
+                </VBox>
+                <Pane fx:id="datePane" layoutX="361.0" layoutY="2.8578643798828125" onMouseExited="#closeDatePane" opacity="0.0" visible="false" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="2.8578643798828125">
+                    <children>
+                        <Rectangle fill="#2d2d2d" height="20.0" layoutX="97.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="popupArrow" width="20.0" />
+                        <Pane layoutY="9.142135620117188" prefHeight="87.0" prefWidth="210.0" styleClass="popupPane">
+                            <children>
+                                <Label fx:id="dateMessage" alignment="CENTER" layoutX="24.0" layoutY="5.0" prefHeight="17.0" prefWidth="165.0" text="Select another date">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Separator layoutX="30.0" layoutY="23.0" prefHeight="2.0" prefWidth="153.0" style="-fx-background-color: #2d2d2d;" />
+                                <JFXDatePicker fx:id="datePicker" defaultColor="#2d2d2d" layoutX="23.0" layoutY="42.0" prefHeight="25.0" prefWidth="140.0" promptText="Select date of bugs" styleClass="datePicker">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></JFXDatePicker>
+                                <FontAwesomeIconView fx:id="dateOK" fill="#2d2d2d" glyphName="CHECK" layoutX="173.0" layoutY="62.0" onMouseClicked="#closeDatePane" size="20" styleClass="popupIcon">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></FontAwesomeIconView>
+                            </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                        </Pane>
+                    </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+                </Pane>
+                <Pane fx:id="starPane" layoutX="398.0" layoutY="340.0" onMouseExited="#closeBuildPane" opacity="0.0" prefHeight="126.0" prefWidth="259.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="21.0">
+                    <children>
+                        <Rectangle fill="#2d2d2d" height="20.0" layoutX="221.0" layoutY="102.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="popupArrow" width="20.0" />
+                        <Pane layoutY="6.0" prefHeight="107.0" prefWidth="256.0" styleClass="popupPane">
+                            <children>
+                                <Label fx:id="starMessage" alignment="CENTER" layoutX="37.0" layoutY="5.0" prefHeight="20.0" prefWidth="171.0" text="Your sugestions HELP US">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Separator layoutX="46.0" layoutY="23.0" prefHeight="2.0" prefWidth="153.0" style="-fx-background-color: #2d2d2d;" />
+                                <FontAwesomeIconView fx:id="starOK" fill="#2d2d2d" glyphName="SEND_ALT" layoutX="216.0" layoutY="90.0" onMouseClicked="#sendComment" onMouseEntered="#sendIcon" onMouseExited="#sendIcon" size="20" styleClass="popupIcon">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="star1" fill="#2d2d2d" glyphName="STAR_ALT" layoutX="46.0" layoutY="62.0" onMouseClicked="#starClicked" size="25" styleClass="star">
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="star2" fill="#2d2d2d" glyphName="STAR_ALT" layoutX="78.0" layoutY="62.0" onMouseClicked="#starClicked" size="25" styleClass="star">
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="star3" fill="#2d2d2d" glyphName="STAR_ALT" layoutX="112.0" layoutY="62.0" onMouseClicked="#starClicked" size="25" styleClass="star">
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="star4" fill="#2d2d2d" glyphName="STAR_ALT" layoutX="146.0" layoutY="62.0" onMouseClicked="#starClicked" size="25" styleClass="star">
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fx:id="star5" fill="#2d2d2d" glyphName="STAR_ALT" layoutX="178.0" layoutY="62.0" onMouseClicked="#starClicked" size="25" styleClass="star">
+                                </FontAwesomeIconView>
+                        <JFXTextField fx:id="feedBackText" alignment="CENTER" focusColor="#2d2d2d" layoutX="10.0" layoutY="71.0" prefHeight="25.0" prefWidth="194.0" promptText="What do you sugest ?" styleClass="feedbackText" />
+                            </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                        </Pane>
+                    </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+                </Pane>
+            </children>
+        </AnchorPane>
+    </center>
+    <bottom>
+        <AnchorPane fx:id="footer" styleClass="footer">
+            <children>
+                <Label fx:id="buildNumber" contentDisplay="RIGHT" layoutX="512.0" layoutY="5.0" onMouseClicked="#showBuildPane" styleClass="buildText" text="Build 0.0-08-20" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <graphic>
+                        <FontAwesomeIconView fx:id="buildNbIcon" blendMode="OVERLAY" fill="WHITE" glyphName="CREATIVE_COMMONS" size="21" styleClass="icons" />
+                    </graphic>
+                    <padding>
+                        <Insets left="3.0" right="3.0" />
+                    </padding>
+                </Label>
+                <Label fx:id="log" layoutX="2.0" layoutY="4.0" prefHeight="23.0" prefWidth="166.0" styleClass="contrastText" text="All traitments are done" textFill="WHITE" AnchorPane.bottomAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                <Label fx:id="activeUsers" alignment="CENTER_RIGHT" layoutX="414.0" layoutY="2.0" prefHeight="25.0" prefWidth="114.0" styleClass="contrastText" text="No active users" textFill="WHITE" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="2.0">
+                    <padding>
+                        <Insets right="2.0" />
+                    </padding>
+                </Label>
+            </children>
+        </AnchorPane>
+    </bottom>
+</BorderPane>

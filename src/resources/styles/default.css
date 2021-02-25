@@ -1,0 +1,101 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 22, 2020, 1:05:24 AM
+    Author     : Isaac
+*/
+
+@import "_variables.css";
+@import "icons.css";
+
+.header{
+    -fx-background-color:-fx-first-color;
+}
+
+.footer{
+    -fx-background-color:-fx-first-color;
+}
+
+.addButton{
+    -fx-background-color:-fx-third-color;
+    -fx-background-radius:1em;
+    -fx-text-fill: -fx-second-color;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+.addButton:hover{    
+    -fx-background-color:derive(-fx-third-color,30%);
+}
+
+.searchPane{
+    -fx-background-radius:2em;
+}
+		
+.searchPaneIcon{
+    -fx-cursor: hand;
+    -fx-fill: -fx-forth-color;
+}
+
+.resultBox{
+    -fx-background-color: -fx-second-color;
+    -fx-background-radius:1em 1em 0 0 ;
+    -fx-border-color:-fx-first-color;
+  /*  -fx-border-radius: 0.9em;*/
+  -fx-border-width:0 0 1px 0;
+}
+
+.contrastText{
+    -fx-text-fill: -fx-second-color;
+    -fx-font-size: 12px;
+}
+
+.buildText{
+    -fx-text-fill: -fx-second-color;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-border-width:  0 0 0 1px;
+    -fx-border-color: -fx-second-color;
+}
+
+.today{
+    -fx-font-size:15px;
+    -fx-text-fill: -fx-second-color;
+    -fx-cursor: hand;
+}
+
+.star{
+    -fx-fill: -fx-first-color;
+    -fx-cursor: hand;
+}
+
+.starOKHover{
+    -glyph-name:"SEND";
+}
+
+.feedbackText{
+    -jfx-focus-color:-fx-first-color;
+}
+
+.popupArrow{
+    -fx-fill:-fx-first-color;
+}
+
+.popupPane{
+    -fx-border-color:-fx-first-color;
+    -fx-border-radius:0.8em;
+    -fx-border-width:2px;
+    -fx-background-radius:1em;
+    -fx-background-color: -fx-second-color;
+}
+
+.popupIcon{
+    -fx-fill:-fx-first-color;
+}
+
+.datePicker{
+    -jfx-default-color:-fx-first-color;
+}

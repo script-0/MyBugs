@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 5, 2020, 9:12:30 PM
+    Author     : Isaac
+*/
+
+.root{
+     -fx-background-color: white;
+     -fx-background-radius:0 0 1.1em 1.1em;
+     -fx-border-radius:0 0 1em 1em;
+}
+
+.footer{
+    -fx-background-color: #455a64;
+     -fx-background-radius:0 0 1.1em 1.1em;
+     -fx-border-radius:0 0 1.1em 1.1em;
+}
+
+.ledOff{
+    -fx-fill:#455a64;
+    -fx-stroke-width:0;
+}
+
+.ledOn{
+    -fx-fill:#f67a6d;
+    -fx-stroke-width:0;
+}

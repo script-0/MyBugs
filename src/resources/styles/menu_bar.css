@@ -1,0 +1,28 @@
+/* 
+    Created on : Aug 31, 2020, 9:56:24 PM
+    Author     : Isaac
+*/
+
+@import "_variables.css";
+
+.menuItemsLabel{
+    -fx-text-fill: -fx-first-color;
+    -fx-font-size:12px;
+    -fx-background-radius:0px;
+    -fx-border-radius:0px;
+}
+
+.icons{
+    -fx-cursor: hand;
+    -fx-fill: -fx-first-color;
+    -glyph-size:23px;
+}
+
+.menuButton:hover{
+    -fx-background-color: derive(-fx-third-color,80%);
+}
+
+.menuBar{
+    -fx-border-width: 0px 1px 0px 0px;
+    -fx-border-color: -fx-first-color;
+}

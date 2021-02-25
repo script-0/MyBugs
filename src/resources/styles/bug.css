@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 23, 2020, 1:41:31 PM
+    Author     : Isaac
+*/
+
+@import "_variables.css";
+@import "icons.css";
+
+.bug{
+    -fx-border-color: -fx-first-color;/*#424242;*/
+    -fx-border-width: 1px 0 1px 1px;
+    -fx-border-radius:1em;
+    -fx-background-radius:0.8em;
+}
+
+.bug:hover{
+    -fx-background-color: derive(-fx-first-color,60%);
+}
+
+.bugLabel{
+    -fx-font-size:13px;
+    -fx-text-fill:black; 
+}
+
+.bugControls{
+    -fx-background-color:-fx-first-color;/*#424242;*/
+    -fx-border-radius: 0.8em;
+    -fx-background-radius:0.9em;
+}
+
+.bugDate{
+    -fx-font-size:13px;
+    -fx-text-fill:-fx-second-color;
+}
+
+.resolved{
+    -fx-fill: #21f405;
+}
+
+.notResolved{
+    -fx-stroke:#21f405;
+}

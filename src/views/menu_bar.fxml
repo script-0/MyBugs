@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="471.0" prefWidth="158.0" styleClass="menuBar" stylesheets="@../resources/styles/menu_bar.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
+   <children>
+      <VBox alignment="TOP_RIGHT" spacing="1.0" style="-fx-background-color: #f2f2f2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FontAwesomeIconView glyphName="CLOSE" onMouseClicked="#closeMenu" styleClass="icons">
+               <VBox.margin>
+                  <Insets right="7.0" />
+               </VBox.margin>
+            </FontAwesomeIconView>
+            <HBox prefHeight="33.0" prefWidth="157.0">
+               <children>
+                  <JFXButton fx:id="add" graphicTextGap="5.0" prefHeight="33.0" prefWidth="154.0" style="-fx-background-radius: 0; -fx-border-radius: 0;" text="Add Bug           " textFill="WHITE" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="15" styleClass="icons" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="menuItemsLabel" />
+                        <String fx:value="menuButton" />
+                     </styleClass>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets right="2.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="32.0" prefWidth="157.0">
+               <children>
+                  <JFXButton fx:id="settings" prefHeight="32.0" prefWidth="154.0" style="-fx-background-radius: 0; -fx-border-radius: 0;" text="Server settings  " textFill="WHITE" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="FEED" size="15" styleClass="icons" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="menuItemsLabel" />
+                        <String fx:value="menuButton" />
+                     </styleClass>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets right="2.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="216.0" prefHeight="29.0" prefWidth="157.0">
+               <children>
+                  <JFXButton fx:id="preferences" layoutX="12.0" layoutY="10.0" prefHeight="33.0" prefWidth="154.0" style="-fx-background-radius: 0; -fx-border-radius: 0;" text="App Preferences" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="GEARS" size="15" styleClass="icons" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="menuItemsLabel" />
+                        <String fx:value="menuButton" />
+                     </styleClass>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets right="2.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="113.0" VBox.vgrow="ALWAYS" />
+            <HBox layoutX="10.0" layoutY="45.0" prefHeight="32.0" prefWidth="157.0">
+               <children>
+                  <JFXButton fx:id="about" prefHeight="33.0" prefWidth="154.0" style="-fx-background-radius: 0; -fx-border-radius: 0;" text="About Us" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USER" size="23" styleClass="icons" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="menuItemsLabel" />
+                        <String fx:value="menuButton" />
+                     </styleClass>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets right="2.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="431.0" prefHeight="32.0" prefWidth="157.0">
+               <children>
+                  <JFXButton fx:id="close" graphicTextGap="5.0" onMouseClicked="#close" prefHeight="33.0" prefWidth="154.0" style="-fx-background-radius: 0; -fx-border-radius: 0;" text="Close      " textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="TIMES_CIRCLE" size="23" styleClass="icons" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="menuItemsLabel" />
+                        <String fx:value="menuButton" />
+                     </styleClass>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets right="2.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
