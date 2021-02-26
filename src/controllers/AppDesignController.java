@@ -7,7 +7,6 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,8 +26,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import models.entities.BugEntity;
 import App.MyBugs;
+import javafx.application.Platform;
+import javafx.scene.text.Text;
 import models.services.BugServices;
 
 /**
@@ -60,6 +60,9 @@ public class AppDesignController implements Initializable {
 
     @FXML
     private FontAwesomeIconView connectState;
+    
+    @FXML
+    private Text connectStateText;
 
     @FXML
     private JFXButton addBug;
@@ -180,24 +183,38 @@ public class AppDesignController implements Initializable {
         });*/
         //pagination.setPageCount(1);
 
-        //Loading Menu interface
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/menu_bar.fxml"));
-            menu = (AnchorPane) loader.load();
-            MenuController controller = loader.getController();
-            controller.setMainController(this);
-            center.heightProperty().addListener((observable, oldValue, newValue) -> {
-                menu.setPrefHeight(newValue.doubleValue());
-            });
-            menuWidth = menu.getPrefWidth();
-            menuHeight = menu.getPrefHeight();
+        Platform.runLater(()->{
+            //Loading Menu interface
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/menu_bar.fxml"));
+                menu = (AnchorPane) loader.load();
+                MenuController controller = loader.getController();
+                controller.setMainController(this);
+                center.heightProperty().addListener((observable, oldValue, newValue) -> {
+                    menu.setPrefHeight(newValue.doubleValue());
+                });
+                menuWidth = menu.getPrefWidth();
+                menuHeight = menu.getPrefHeight();
 
-            System.out.println("Loading Menu success [width = " + menuWidth + ", height = " + menuHeight + "]");
-        } catch (IOException ex) {
-            Logger.getLogger(AppDesignController.class.getName()).log(Level.SEVERE, null, ex);
-            //Loading of Menu Interface failed
-        }
-        bugServices = new BugServices();
+                System.out.println("Loading Menu success [width = " + menuWidth + ", height = " + menuHeight + "]");
+            } catch (IOException ex) {
+                Logger.getLogger(AppDesignController.class.getName()).log(Level.SEVERE, null, ex);
+                //Loading of Menu Interface failed
+            }
+        });
+        
+        Platform.runLater(()->{
+            log.setText("Connecting to Server ...");
+            bugServices = new BugServices();
+            if(bugServices.testDBConnection()){
+                log.setText("Connected to Server");
+                connectState.setGlyphName("CIRCLE");
+                connectStateText.setText("Server is Up");
+            }else{
+                log.setText("Connection to Server Failed. Retring ...");
+                connectStateText.setText("Server is Down");
+            }
+        });
     }
 
     boolean isMaximized = false;
@@ -350,21 +367,11 @@ public class AppDesignController implements Initializable {
     void search(KeyEvent e) {
         if (e.getCode() == KeyCode.ENTER) {
 
-            log.setText("Searching for bug ...");
+            log.setText("Searching for bugs ...");
             System.out.println("Key ENTER Typed");
             String query = searchText.getText();
             //Interrogate DB.
-            /*si pas de resultat
-                resultBox.getChildren().clear();
-                resultBox.getChildren().add(placeHolderSearchBox);
-                resultBox.setAlignment(Pos.CENTER);
-             */
             MyBugs.bugs.clear();
-            /*BugEntity bug1, bug2;
-            bug1 = new BugEntity(1, query + "0", "Solution1", true);
-            bug2 = new BugEntity(20, query + "1", "", false);
-
-            MyBugs.bugs.addAll(bug1, bug2);*/
             MyBugs.bugs.addAll(bugServices.search(query));
             resultBox.getChildren().clear();
             if(MyBugs.bugs.size() == 0){

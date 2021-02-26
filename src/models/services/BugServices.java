@@ -36,6 +36,10 @@ public class BugServices {
         }
     }
     
+    public boolean testDBConnection(){
+        return Connections.getPostgresConnection() != null;
+    }
+    
     public Set<BugEntity> search(String label){
         Connection con = Connections.getPostgresConnection();
         try{

@@ -32,7 +32,7 @@ public class Connections {
 	}catch(Exception e){
             System.out.println("[Can't connect to Database]\n"+e);
         }
-        return null; 
+        return null;
    }
     
     public static Connection getMySqlConnection(){

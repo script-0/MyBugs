@@ -47,7 +47,7 @@
                 <FontAwesomeIconView fx:id="info" blendMode="OVERLAY" fill="WHITE" glyphName="BARS" layoutX="8.0" layoutY="25.571428298950195" onMouseClicked="#showInfoPane" size="24" styleClass="icons" AnchorPane.bottomAnchor="4.53125" AnchorPane.topAnchor="5.0">
                
                 </FontAwesomeIconView>
-                <FontAwesomeIconView fx:id="connectState" fill="WHITE" glyphName="CIRCLE" layoutX="363.0" layoutY="26.0" size="23" styleClass="icons" AnchorPane.rightAnchor="247.0">
+                <FontAwesomeIconView fx:id="connectState" fill="WHITE" glyphName="CIRCLE_ALT" layoutX="363.0" layoutY="26.0" size="23" styleClass="icons" AnchorPane.rightAnchor="247.0">
              
                 </FontAwesomeIconView>
                 <JFXButton fx:id="addBug" accessibleText="Add Bug" blendMode="OVERLAY" cache="true" cacheHint="QUALITY" defaultButton="true" layoutX="174.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" styleClass="addButton" text="Add a Bug" textFill="WHITE" AnchorPane.rightAnchor="391.0">
@@ -55,7 +55,7 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="15" styleClass="icons" />
                     </graphic>
                 </JFXButton>
-            <Text fill="#f2f2f2" layoutX="323.0" layoutY="22.0" strokeType="OUTSIDE" text="Server is Up" AnchorPane.rightAnchor="269.87060546875">
+            <Text fx:id="connectStateText" fill="#f2f2f2" layoutX="323.0" layoutY="22.0" strokeType="OUTSIDE" text="Server is Down" AnchorPane.rightAnchor="269.87060546875">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -171,7 +171,7 @@
     <bottom>
         <AnchorPane fx:id="footer" styleClass="footer">
             <children>
-                <Label fx:id="buildNumber" contentDisplay="RIGHT" layoutX="512.0" layoutY="5.0" onMouseClicked="#showBuildPane" styleClass="buildText" text="Build 0.25-02-20" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Label fx:id="buildNumber" contentDisplay="RIGHT" layoutX="512.0" layoutY="5.0" onMouseClicked="#showBuildPane" styleClass="buildText" text="Build 0. 02-20" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <graphic>
                         <FontAwesomeIconView fx:id="buildNbIcon" blendMode="OVERLAY" fill="WHITE" glyphName="CREATIVE_COMMONS" size="21" styleClass="icons" />
                     </graphic>
