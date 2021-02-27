@@ -173,18 +173,25 @@ public class BugDetailsController implements Initializable {
     @FXML
     void save() {
         //traitment
-        this.bug.setLabel(labelTextField.getText());
-        this.bug.setSolution(solutionArea.getText());
-        this.bug.setResolved(isResolved.isSelected());
-        int result = Utils.Utils.getBugServices().update(this.bug);
-        if( result == 1){
-            // All is OK!
-        }else if(result == 0){
-            //No Bug in the Database
-        }else if (result < 0){
-            //Error
-        }else{ // result > 1
-            //More than 1 row with the same id. (Impossible a priori)
+        boolean isModified = bug.getLabel().equalsIgnoreCase(labelTextField.getText()) ||
+                             bug.getSolution().equalsIgnoreCase(solutionArea.getText()) ||
+                             (bug.isResolved()== isResolved.isSelected());
+        //Si a moins une modification a été effectuée alors on enregistre dans le B.D. 
+        //On est si regardant à cause de la politique d'affichage des bugs, les plus récemment mis à jour sont affichés en premier
+        if(isModified){
+            this.bug.setLabel(labelTextField.getText());
+            this.bug.setSolution(solutionArea.getText());
+            this.bug.setResolved(isResolved.isSelected());
+            int result = Utils.Utils.getBugServices().update(this.bug);
+            if( result == 1){
+                // All is OK!
+            }else if(result == 0){
+                //No Bug in the Database
+            }else if (result < 0){
+                //Error
+            }else{ // result > 1
+                //More than 1 row with the same id. (Impossible a priori)
+            }
         }
         close();
     }
