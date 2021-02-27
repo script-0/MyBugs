@@ -176,6 +176,16 @@ public class BugDetailsController implements Initializable {
         this.bug.setLabel(labelTextField.getText());
         this.bug.setSolution(solutionArea.getText());
         this.bug.setResolved(isResolved.isSelected());
+        int result = Utils.Utils.getBugServices().update(this.bug);
+        if( result == 1){
+            // All is OK!
+        }else if(result == 0){
+            //No Bug in the Database
+        }else if (result < 0){
+            //Error
+        }else{ // result > 1
+            //More than 1 row with the same id. (Impossible a priori)
+        }
         close();
     }
 

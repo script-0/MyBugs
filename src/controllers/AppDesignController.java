@@ -215,6 +215,7 @@ public class AppDesignController implements Initializable {
                 connectStateText.setText("Server is Down");
             }
         });
+        System.gc();
     }
 
     boolean isMaximized = false;
@@ -385,6 +386,7 @@ public class AppDesignController implements Initializable {
             }
             log.setText("All traitements are done");            
             searchText.setDisable(false);
+            System.gc();
         }
     }
 
@@ -428,7 +430,7 @@ public class AppDesignController implements Initializable {
             resultBox.setAlignment(Pos.TOP_CENTER);
             return this.resultBox;
         });
-
+        System.gc();
     }
 
 }

@@ -28,7 +28,7 @@ public class Utils {
 
     private static ImageView waitPane = null;
     
-    public static BugServices bugServices = null;
+    private static BugServices bugServices = null;
     
     public static boolean initBugServices(){
         bugServices = new BugServices();
