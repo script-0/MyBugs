@@ -1,14 +1,19 @@
 package Utils;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Transition;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -20,6 +25,26 @@ import javafx.util.Duration;
  */
 public class Utils {
 
+    private static ImageView waitPane = null;
+    
+    public static boolean init(){
+        try {
+            waitPane = (ImageView)FXMLLoader.load(Utils.class.getResource("/views/wait.fxml"));
+            return true;
+        } catch (IOException ex) {
+            //Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("loading WaitPane failed");
+            return false;
+        }
+    }
+    
+    public static ImageView getWaitPane(){
+        if(waitPane == null){
+            return init() ? waitPane : null;
+        }
+        return waitPane;
+    }
+    
     public static void openTransition(Node b) {
         b.setVisible(true);
         transition(b, true);

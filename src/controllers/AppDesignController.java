@@ -193,7 +193,7 @@ public class AppDesignController implements Initializable {
                 center.heightProperty().addListener((observable, oldValue, newValue) -> {
                     menu.setPrefHeight(newValue.doubleValue());
                 });
-                menuWidth = menu.getPrefWidth();
+                menuWidth = menu.getPrefWidth();  
                 menuHeight = menu.getPrefHeight();
 
                 System.out.println("Loading Menu success [width = " + menuWidth + ", height = " + menuHeight + "]");
@@ -366,21 +366,25 @@ public class AppDesignController implements Initializable {
     @FXML
     void search(KeyEvent e) {
         if (e.getCode() == KeyCode.ENTER) {
-
-            log.setText("Searching for bugs ...");
-            System.out.println("Key ENTER Typed");
-            String query = searchText.getText();
-            //Interrogate DB.
-            MyBugs.bugs.clear();
-            MyBugs.bugs.addAll(bugServices.search(query));
+            searchText.setDisable(true);
             resultBox.getChildren().clear();
+            resultBox.getChildren().add(Utils.Utils.getWaitPane());
+            resultBox.setAlignment(Pos.CENTER);
+            log.setText("Searching for bugs ...");
+            System.out.println("Searching for bugs ...");
+            String query = searchText.getText();
+            MyBugs.bugs.clear();
+            //Interrogate DB.
+            MyBugs.bugs.addAll(bugServices.search(query));
             if(MyBugs.bugs.size() == 0){
+                resultBox.getChildren().clear();
                 resultBox.getChildren().add(placeHolderSearchBox);
-                resultBox.setAlignment(Pos.CENTER);                
+                resultBox.setAlignment(Pos.CENTER);
             }else{
                 initPagination();
             }
-            log.setText("All traitements are done");
+            log.setText("All traitements are done");            
+            searchText.setDisable(false);
         }
     }
 
@@ -406,7 +410,7 @@ public class AppDesignController implements Initializable {
         resultBox.getChildren().clear();
 
         int f = MyBugs.bugs.size() > 4 ? 4 : MyBugs.bugs.size();
-
+        
         for (int i = 0; i < f; i++) {
             resultBox.getChildren().add(loadBug(i));
         }
