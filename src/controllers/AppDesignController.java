@@ -205,7 +205,7 @@ public class AppDesignController implements Initializable {
         
         Platform.runLater(()->{
             log.setText("Connecting to Server ...");
-            bugServices = new BugServices();
+            bugServices = Utils.Utils.getBugServices();
             if(bugServices.testDBConnection()){
                 log.setText("Connected to Server");
                 connectState.setGlyphName("CIRCLE");

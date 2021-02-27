@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import models.services.BugServices;
 
 /**
  *
@@ -27,7 +28,21 @@ public class Utils {
 
     private static ImageView waitPane = null;
     
-    public static boolean init(){
+    public static BugServices bugServices = null;
+    
+    public static boolean initBugServices(){
+        bugServices = new BugServices();
+        return true;
+    }
+    
+    public static BugServices getBugServices(){
+        if(bugServices == null){
+            return initBugServices() ? bugServices : null;
+        }
+        return bugServices;
+    }
+    
+    public static boolean initWaitPane(){
         try {
             waitPane = (ImageView)FXMLLoader.load(Utils.class.getResource("/views/wait.fxml"));
             return true;
@@ -40,7 +55,7 @@ public class Utils {
     
     public static ImageView getWaitPane(){
         if(waitPane == null){
-            return init() ? waitPane : null;
+            return initWaitPane() ? waitPane : null;
         }
         return waitPane;
     }

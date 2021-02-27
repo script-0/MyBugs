@@ -81,6 +81,7 @@ public class BugDetailsController implements Initializable {
 
     private Stage stage = null;
 
+    private BugEntity bug = null;
     /**
      * Initializes the controller class.
      *
@@ -92,6 +93,7 @@ public class BugDetailsController implements Initializable {
     }
 
     public void loadBug(BugEntity bug) {
+        this.bug = bug;
         this.labelTextField.setText(bug.getLabel());
         this.solutionArea.setText(bug.getSolution());
         this.isResolved.setSelected(bug.isResolved());
@@ -171,6 +173,9 @@ public class BugDetailsController implements Initializable {
     @FXML
     void save() {
         //traitment
+        this.bug.setLabel(labelTextField.getText());
+        this.bug.setSolution(solutionArea.getText());
+        this.bug.setResolved(isResolved.isSelected());
         close();
     }
 

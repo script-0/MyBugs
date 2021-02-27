@@ -16,12 +16,11 @@ import models.entities.BugEntity;
  */
 public class BugServices {
     
-    public int save(String label, String solution ,Boolean isResolved) throws SQLException{
+    public int save(String label, String solution ,Boolean isResolved){
         Connection con = Connections.getPostgresConnection();
         try{
-            Statement stmt = con.createStatement();
             String insertSql = "INSERT INTO bug(label, solution, resolved,creationdate,lastupdatedate)"
-              + " VALUES(?, ?, ?,?,?)";
+              + " VALUES(?, ?, ?, ?, ?)";
             PreparedStatement pstmt = con.prepareStatement(insertSql);
             pstmt.setString(1,label);
             pstmt.setString(2, solution);
@@ -32,7 +31,24 @@ public class BugServices {
             System.out.println("[PostgreSql : INSERT -> bug]: "+rowsAffected+" rows affected");
             return rowsAffected;
 	}catch(SQLException e){
-            throw e;
+            return -1;
+        }
+    }
+    
+    public int update (BugEntity bug){
+        Connection con = Connections.getPostgresConnection();
+        try{
+            String insertSql = "UPDATE bug SET label=? , solution = ?, resolved= ? ,lastupdatedate=NOW() WHERE id = ?";
+            PreparedStatement pstmt = con.prepareStatement(insertSql);
+            pstmt.setString(1,bug.getLabel());
+            pstmt.setString(2, bug.getSolution());
+            pstmt.setBoolean(3, bug.isResolved());
+            pstmt.setLong(4,bug.getId());
+            int rowsAffected = pstmt.executeUpdate();
+            System.out.println("[PostgreSql : UPDATE -> bug]: "+rowsAffected+" rows affected");
+            return rowsAffected;
+	}catch(SQLException e){
+            return -1;
         }
     }
     
