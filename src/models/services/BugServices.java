@@ -61,7 +61,7 @@ public class BugServices {
         try{
             Statement stmt = con.createStatement();
             //Check label format : SQL Injection
-            String insertSql = "SELECT * FROM bug WHERE UPPER(label) LIKE ?";
+            String insertSql = "SELECT * FROM bug WHERE UPPER(label) LIKE ? ORDER BY lastupdatedate ASC";
             PreparedStatement pstmt = con.prepareStatement(insertSql);
             pstmt.setString(1,"%"+label.toUpperCase()+"%");
             Set<BugEntity> bugs = new HashSet<>();
