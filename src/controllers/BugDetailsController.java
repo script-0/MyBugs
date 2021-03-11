@@ -29,13 +29,7 @@ public class BugDetailsController implements Initializable {
 
     @FXML
     private AnchorPane root;
-    
-    @FXML
-    private Label titleText;
 
-    @FXML
-    private FontAwesomeIconView titleIcon;
-    
     @FXML
     private FontAwesomeIconView expand;
     
@@ -44,13 +38,6 @@ public class BugDetailsController implements Initializable {
 
     @FXML
     private TextField labelTextField;
-
-    @FXML
-    private Label label;
-
-    @FXML
-    private Label solutionLabel;
-
     
     @FXML
     private TextArea solutionArea;
@@ -69,9 +56,6 @@ public class BugDetailsController implements Initializable {
 
     @FXML
     private FontAwesomeIconView cancelIcon;
-
-    @FXML
-    private FontAwesomeIconView footerIcon;
 
     @FXML
     private JFXButton includeFiles;

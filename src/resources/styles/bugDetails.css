@@ -20,22 +20,16 @@ and open the template in the editor.
     -fx-background-color: -fx-first-color;
 }
 
-.fieldLabel{
-    -fx-arc-height:30px ;
-    -fx-arc-width: 30px;
-    -fx-fill: -fx-first-color;
-    -fx-stroke: transparent;
+.title{
+    -fx-text-fill: -fx-first-color;
 }
 
-.fieldLabelText{
-    -fx-text-fill: -fx-second-color;
-    -fx-font-size: 15px;
-}
 
 .labelTextField{
     -fx-background-radius: 2em;
     -fx-border-radius:2em;
     -fx-font-size: 12px;
+    background-color: #EAE6E6;
 }
 
 .saveButton{
@@ -61,5 +55,6 @@ and open the template in the editor.
 .solutionArea{
     -fx-background-radius: 1.5em;
     -fx-border-radius: 1.5em;
-    -fx-font-size:14px;    
+    -fx-font-size:14px;
+    background-color: #EAE6E6;
 }
