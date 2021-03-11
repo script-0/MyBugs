@@ -7,17 +7,25 @@ package controllers;
 
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import models.entities.BugEntity;
 
 /**
@@ -32,16 +40,16 @@ public class BugDetailsController implements Initializable {
 
     @FXML
     private FontAwesomeIconView expand;
-    
+
     @FXML
     private FontAwesomeIconView closeButton;
 
     @FXML
     private TextField labelTextField;
-    
+
     @FXML
     private TextArea solutionArea;
-    
+
     @FXML
     private CheckBox isResolved;
 
@@ -66,6 +74,7 @@ public class BugDetailsController implements Initializable {
     private Stage stage = null;
 
     private BugEntity bug = null;
+
     /**
      * Initializes the controller class.
      *
@@ -83,11 +92,24 @@ public class BugDetailsController implements Initializable {
         this.isResolved.setSelected(bug.isResolved());
     }
 
-    public void setStage(Stage stage){
+    public void setStage(Stage stage) {
         this.stage = stage;
     }
-    
-     boolean isMaximized = false;
+
+    public void show() {
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        this.setStage(stage);
+
+        stage.show();
+    }
+
+    boolean isMaximized = false;
 
     @FXML
     void maximize() {
@@ -111,8 +133,7 @@ public class BugDetailsController implements Initializable {
             closeButton.getStyleClass().add("closeIcon");
         }
     }
-    
-    
+
     /**
      * ******** Managing moving *************
      */
@@ -142,7 +163,6 @@ public class BugDetailsController implements Initializable {
     /**
      * **********************
      */
-
     @FXML
     void close() {
         ((Stage) closeButton.getScene().getWindow()).close();
@@ -157,23 +177,23 @@ public class BugDetailsController implements Initializable {
     @FXML
     void save() {
         //traitment
-        boolean isModified = bug.getLabel().equalsIgnoreCase(labelTextField.getText()) ||
-                             bug.getSolution().equalsIgnoreCase(solutionArea.getText()) ||
-                             (bug.isResolved()== isResolved.isSelected());
+        boolean isModified = bug.getLabel().equalsIgnoreCase(labelTextField.getText())
+                || bug.getSolution().equalsIgnoreCase(solutionArea.getText())
+                || (bug.isResolved() == isResolved.isSelected());
         //Si a moins une modification a été effectuée alors on enregistre dans le B.D. 
         //On est si regardant à cause de la politique d'affichage des bugs, les plus récemment mis à jour sont affichés en premier
-        if(isModified){
+        if (isModified) {
             this.bug.setLabel(labelTextField.getText());
             this.bug.setSolution(solutionArea.getText());
             this.bug.setResolved(isResolved.isSelected());
             int result = Utils.Utils.getBugServices().update(this.bug);
-            if( result == 1){
+            if (result == 1) {
                 // All is OK!
-            }else if(result == 0){
+            } else if (result == 0) {
                 //No Bug in the Database
-            }else if (result < 0){
+            } else if (result < 0) {
                 //Error
-            }else{ // result > 1
+            } else { // result > 1
                 //More than 1 row with the same id. (Impossible a priori)
             }
         }

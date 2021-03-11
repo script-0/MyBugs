@@ -87,18 +87,9 @@ public class BugController implements Initializable {
             AnchorPane bugDetails = (AnchorPane) loader.load();
             BugDetailsController bugDetailsControl = loader.getController();
             bugDetailsControl.loadBug(bugData);
-            System.out.println("Loading Bug Details Interface success");
-            Scene scene = new Scene(bugDetails);
-            scene.setFill(Color.TRANSPARENT);
-            //Stage stage = new Stage(StageStyle.TRANSPARENT);
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
+            System.out.println("Loading Bug Details Interface success");           
+            bugDetailsControl.show();
             
-            bugDetailsControl.setStage(stage);
-            
-            stage.show();
         } catch (IOException ex) {
             Logger.getLogger(AppDesignController.class.getName()).log(Level.SEVERE, null, ex);
             //Loading  failed

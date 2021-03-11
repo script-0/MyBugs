@@ -28,7 +28,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import App.MyBugs;
 import javafx.application.Platform;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import models.services.BugServices;
 
 /**
@@ -364,6 +369,30 @@ public class AppDesignController implements Initializable {
         });
     }
 
+    
+    @FXML
+    void addBug() {
+        //if (bugDetails == null) {
+        //Loading Bug Details interface
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/bugDetails.fxml"));
+            AnchorPane bugDetails = (AnchorPane) loader.load();
+            BugDetailsController bugDetailsControl = loader.getController();
+            System.out.println("Loading Bug Details Interface success");
+            
+            bugDetailsControl.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(AppDesignController.class.getName()).log(Level.SEVERE, null, ex);
+            //Loading  failed
+        }
+        /* } else {
+            bugDetailsControl.loadBug(bugData);
+        }*/
+
+    }
+    
+    
     @FXML
     void search(KeyEvent e) {
         if (e.getCode() == KeyCode.ENTER) {
