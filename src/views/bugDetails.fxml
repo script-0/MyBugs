@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -21,7 +22,10 @@
       <TextField fx:id="labelTextField" layoutX="275.0" layoutY="71.0" prefHeight="31.0" prefWidth="321.0" promptText="Bug Label" styleClass="labelTextField" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="26.0" />
       <Separator layoutX="33.0" layoutY="56.0" prefWidth="200.0" styleClass="titleBar" AnchorPane.leftAnchor="33.0" />
       <TextArea fx:id="solutionArea" layoutX="275.0" layoutY="116.0" prefHeight="310.0" prefWidth="321.0" promptText="Enter solution here" styleClass="solutionArea" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="26.0" />
-      <CheckBox fx:id="isResolved" layoutX="277.0" layoutY="437.0" mnemonicParsing="false" text="It's resolved" textFill="#455a64" />
+      <CheckBox fx:id="isResolved" layoutX="277.0" layoutY="437.0" mnemonicParsing="false" text="It's resolved" textFill="#455a64">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></CheckBox>
       <Region layoutY="553.0" prefHeight="26.0" prefWidth="138.0" style="-fx-background-radius: 0 2em 0 0;" styleClass="titleBar" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" />
       <Label layoutX="15.0" layoutY="552.0" text="MyBugs  |  ScriptX" textFill="WHITE" AnchorPane.leftAnchor="15.0">
          <font>
@@ -31,12 +35,15 @@
          <graphic>
             <FontAwesomeIconView fx:id="includeFilesIcon" fill="#4765b2" glyphName="PLUS" size="20" />
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <FontAwesomeIconView fx:id="expand" fill="RED" glyphName="SQUARE_ALT" layoutX="558.0" layoutY="23.0" onMouseClicked="#maximize" size="20" styleClass="icons" AnchorPane.rightAnchor="48.2857141494751" />
       <FontAwesomeIconView fx:id="closeButton11" fill="WHITE" glyphName="MINUS" layoutX="519.4285774230957" layoutY="23.0" onMouseClicked="#minimize" size="20" styleClass="icons" AnchorPane.rightAnchor="86.8571367263794" />
       <JFXButton fx:id="cancel" layoutX="495.0" layoutY="519.0" onAction="#cancel" prefHeight="17.0" prefWidth="84.0" styleClass="cancelButton" text="Cancel" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="43.0">
          <graphic>
-            <FontAwesomeIconView fx:id="cancelIcon" fill="#455a64" glyphName="CLOSE" size="18" />
+            <FontAwesomeIconView fx:id="cancelIcon" fill="#455a64" glyphName="CLOSE" size="18" styleClass="icon" />
          </graphic>
          <font>
             <Font size="11.0" />
@@ -47,7 +54,7 @@
             <Font size="11.0" />
          </font>
          <graphic>
-            <FontAwesomeIconView fx:id="saveIcon" fill="WHITE" glyphName="SAVE" size="18" styleClass="icons" />
+            <FontAwesomeIconView fx:id="saveIcon" fill="WHITE" glyphName="SAVE" size="18" styleClass="icon" />
          </graphic>
       </JFXButton>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="31.0" prefHeight="17.0" prefWidth="91.0" styleClass="title" text="Report Bug">

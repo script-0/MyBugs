@@ -33,18 +33,46 @@ and open the template in the editor.
 }
 
 .saveButton{
-    -fx-background-color:-fx-first-color;
-    -fx-text-fill: -fx-second-color;
-    -fx-background-radius: 1.5em;
-    -fx-border-radius: 1.5em;
-}
-
-.cancelButton{
     -fx-border-color:-fx-first-color;
     -fx-background-color:-fx-second-color;
     -fx-text-fill: -fx-first-color;
     -fx-background-radius: 1.5em;
     -fx-border-radius: 1.5em;    
+}
+
+.saveButton .icon{
+    -fx-fill: -fx-first-color;
+}
+
+.saveButton:hover{
+    -fx-background-color:-fx-first-color;
+    -fx-text-fill: -fx-second-color;
+}
+
+
+.saveButton:hover .icon{
+    -fx-fill: -fx-second-color;
+}
+
+.cancelButton{
+    -fx-border-color:red;
+    -fx-text-fill: red;
+    -fx-background-radius: 1.5em;
+    -fx-border-radius: 1.5em;    
+}
+
+.cancelButton .icon{
+    -fx-fill: red;
+}
+
+.cancelButton:hover{
+    -fx-background-color:red;
+    -fx-text-fill: -fx-second-color;
+}
+
+
+.cancelButton:hover .icon{
+    -fx-fill: -fx-second-color;
 }
 
 .designCircle{
