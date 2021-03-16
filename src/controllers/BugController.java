@@ -49,11 +49,7 @@ public class BugController implements Initializable {
     private Label bugLabel;
 
     private BugEntity bugData;
-
-    /*public static BugDetailsController bugDetailsControl = null;
-
-    public static Pane bugDetails = null;
-     */
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

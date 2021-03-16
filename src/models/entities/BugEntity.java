@@ -46,6 +46,10 @@ public class BugEntity implements Serializable{
     }
 
     public BugEntity() {
+        this.id = -1;
+        this.label = "";
+        this.solution = "";
+        this.resolved = false;
     }
 
     public long getId() {

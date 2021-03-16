@@ -21,6 +21,11 @@ public class MenuController implements Initializable{
     
     @FXML void close(MouseEvent e){
         mainController.exit(e);
+    }    
+    
+    @FXML
+    void addBug() {
+        Utils.Utils.loadBugDetailsInterface();
     }
 
     @Override

@@ -20,19 +20,21 @@ public class BugServices {
         Connection con = Connections.getPostgresConnection();
         try{
             String insertSql = "INSERT INTO bug(label, solution, resolved,creationdate,lastupdatedate)"
-              + " VALUES(?, ?, ?, ?, ?)";
+              + " VALUES(?, ?, ?, NOW(), NOW())";
             PreparedStatement pstmt = con.prepareStatement(insertSql);
             pstmt.setString(1,label);
             pstmt.setString(2, solution);
             pstmt.setBoolean(3,isResolved);
-            pstmt.setDate(4,new Date(System.currentTimeMillis()));
-            pstmt.setDate(5,new Date(System.currentTimeMillis()));
             int rowsAffected = pstmt.executeUpdate();
             System.out.println("[PostgreSql : INSERT -> bug]: "+rowsAffected+" rows affected");
             return rowsAffected;
 	}catch(SQLException e){
             return -1;
         }
+    }
+    
+    public int save(BugEntity bug){
+        return save(bug.getLabel(),bug.getSolution(),bug.isResolved());
     }
     
     public int update (BugEntity bug){
@@ -61,7 +63,7 @@ public class BugServices {
         try{
             Statement stmt = con.createStatement();
             //Check label format : SQL Injection
-            String insertSql = "SELECT * FROM bug WHERE UPPER(label) LIKE ? ORDER BY lastupdatedate ASC";
+            String insertSql = "SELECT * FROM bug WHERE UPPER(label) LIKE ? ORDER BY lastupdatedate DESC";
             PreparedStatement pstmt = con.prepareStatement(insertSql);
             pstmt.setString(1,"%"+label.toUpperCase()+"%");
             Set<BugEntity> bugs = new HashSet<>();

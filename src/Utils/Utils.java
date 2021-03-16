@@ -1,5 +1,7 @@
 package Utils;
 
+import controllers.AppDesignController;
+import controllers.BugDetailsController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -210,6 +212,21 @@ public class Utils {
     
     public static String format(Date date){
         return formatter.format(date);
+    }
+    
+    public static void loadBugDetailsInterface(){
+        try {
+            FXMLLoader loader = new FXMLLoader(Utils.class.getResource("/views/bugDetails.fxml"));
+            AnchorPane bugDetails = (AnchorPane) loader.load();
+            BugDetailsController bugDetailsControl = loader.getController();
+            System.out.println("Loading Bug Details Interface success");
+            
+            bugDetailsControl.show();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(AppDesignController.class.getName()).log(Level.SEVERE, null, ex);
+            //Loading  failed
+        }
     }
     
 }

@@ -20,7 +20,7 @@
             </FontAwesomeIconView>
             <HBox prefHeight="33.0" prefWidth="157.0">
                <children>
-                  <JFXButton fx:id="add" graphicTextGap="5.0" prefHeight="33.0" prefWidth="154.0" style="-fx-background-radius: 0; -fx-border-radius: 0;" text="Add Bug           " textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="add" graphicTextGap="5.0" onAction="#addBug" prefHeight="33.0" prefWidth="154.0" style="-fx-background-radius: 0; -fx-border-radius: 0;" text="Add Bug           " textFill="WHITE" HBox.hgrow="ALWAYS">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="15" styleClass="icons" />
                      </graphic>

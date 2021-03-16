@@ -50,7 +50,7 @@
                 <FontAwesomeIconView fx:id="connectState" fill="WHITE" glyphName="CIRCLE_ALT" layoutX="363.0" layoutY="26.0" size="23" styleClass="icons" AnchorPane.rightAnchor="247.0">
              
                 </FontAwesomeIconView>
-                <JFXButton fx:id="addBug" accessibleText="Add Bug" blendMode="OVERLAY" cache="true" cacheHint="QUALITY" defaultButton="true" layoutX="174.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" styleClass="addButton" text="Add a Bug" textFill="WHITE" AnchorPane.rightAnchor="391.0">
+                <JFXButton fx:id="addBug" accessibleText="Add Bug" blendMode="OVERLAY" cache="true" cacheHint="QUALITY" defaultButton="true" layoutX="174.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#addBug" prefHeight="25.0" prefWidth="96.0" styleClass="addButton" text="Add a Bug" textFill="WHITE" AnchorPane.rightAnchor="391.0">
                     <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="15" styleClass="icons" />
                     </graphic>

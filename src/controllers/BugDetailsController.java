@@ -7,17 +7,12 @@ package controllers;
 
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -83,6 +78,7 @@ public class BugDetailsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        bug = new BugEntity();
     }
 
     public void loadBug(BugEntity bug) {
@@ -180,13 +176,18 @@ public class BugDetailsController implements Initializable {
         boolean isModified = bug.getLabel().equalsIgnoreCase(labelTextField.getText())
                 || bug.getSolution().equalsIgnoreCase(solutionArea.getText())
                 || (bug.isResolved() == isResolved.isSelected());
-        //Si a moins une modification a été effectuée alors on enregistre dans le B.D. 
+        //Si on a au moins une modification a été effectuée alors on enregistre dans le B.D. 
         //On est si regardant à cause de la politique d'affichage des bugs, les plus récemment mis à jour sont affichés en premier
-        if (isModified) {
+        if (isModified || (bug.getId() == -1 && labelTextField.getText() != "") ){
             this.bug.setLabel(labelTextField.getText());
             this.bug.setSolution(solutionArea.getText());
             this.bug.setResolved(isResolved.isSelected());
-            int result = Utils.Utils.getBugServices().update(this.bug);
+            int result;
+            if(this.bug.getId() == -1) {
+                result = Utils.Utils.getBugServices().save(this.bug);
+            }else{
+                result = Utils.Utils.getBugServices().update(this.bug);
+            }
             if (result == 1) {
                 // All is OK!
             } else if (result == 0) {
@@ -196,6 +197,8 @@ public class BugDetailsController implements Initializable {
             } else { // result > 1
                 //More than 1 row with the same id. (Impossible a priori)
             }
+        }else{
+            System.out.println("Saving requirements on Bug Object not verified");
         }
         close();
     }

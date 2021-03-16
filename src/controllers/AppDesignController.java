@@ -368,28 +368,10 @@ public class AppDesignController implements Initializable {
             Utils.Utils.searchPaneTransition(searchText, searchIcon);
         });
     }
-
     
     @FXML
     void addBug() {
-        //if (bugDetails == null) {
-        //Loading Bug Details interface
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/bugDetails.fxml"));
-            AnchorPane bugDetails = (AnchorPane) loader.load();
-            BugDetailsController bugDetailsControl = loader.getController();
-            System.out.println("Loading Bug Details Interface success");
-            
-            bugDetailsControl.show();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(AppDesignController.class.getName()).log(Level.SEVERE, null, ex);
-            //Loading  failed
-        }
-        /* } else {
-            bugDetailsControl.loadBug(bugData);
-        }*/
-
+        Utils.Utils.loadBugDetailsInterface();
     }
     
     
