@@ -4,7 +4,12 @@ import controllers.AppDesignController;
 import controllers.BugDetailsController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -208,10 +213,21 @@ public class Utils {
         Utils.searchPaneAnimation(pane, icon, x0==435?35:435, x0==435?42:442, 300);
     }
 
-    static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
+    static SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
+    static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
     
     public static String format(Date date){
-        return formatter.format(date);
+        return dateFormatter.format(date);
+    }
+    public static String format(LocalDateTime date){
+        return dateTimeFormatter.format(date);
+    }
+    
+    public static LocalDateTime toLocalDateTime(Timestamp time){
+        return LocalDateTime.ofInstant(
+                   Instant.ofEpochMilli(time.getTime()), 
+                   ZoneOffset.UTC
+               );
     }
     
     public static void loadBugDetailsInterface(){

@@ -5,8 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.HashSet;
 import java.util.Set;
 import models.entities.BugEntity;
@@ -72,8 +73,8 @@ public class BugServices {
                 bugs.add(new BugEntity(pstmt.getResultSet().getLong("id"),
                                         pstmt.getResultSet().getString("label"),
                                         pstmt.getResultSet().getString("solution"),
-                                        pstmt.getResultSet().getDate("creationdate"),
-                                        pstmt.getResultSet().getDate("lastupdatedate"),
+                                        Utils.Utils.toLocalDateTime(pstmt.getResultSet().getTimestamp("creationdate") ),
+                                        Utils.Utils.toLocalDateTime(pstmt.getResultSet().getTimestamp("lastupdatedate") ),
                                         pstmt.getResultSet().getBoolean("resolved"))
                 );
             }

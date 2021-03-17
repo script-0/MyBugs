@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 /**
  *
  * @author Isaac
@@ -19,9 +19,9 @@ public class BugEntity implements Serializable{
     
     private String label;
     
-    private Date creationDate;
+    private LocalDateTime creationDate;
     
-    private Date lastUpdateDate;
+    private LocalDateTime lastUpdateDate;
     
     private String solution;
     
@@ -36,7 +36,7 @@ public class BugEntity implements Serializable{
         this.resolved = resolved;
     }
 
-    public BugEntity(long id, String label, String solution, Date creationDate, Date lastUpdateDate, boolean resolved) {
+    public BugEntity(long id, String label, String solution, LocalDateTime creationDate, LocalDateTime lastUpdateDate, boolean resolved) {
         this.id = id;
         this.label = label;
         this.creationDate = creationDate;
@@ -68,15 +68,15 @@ public class BugEntity implements Serializable{
         this.label = label;
     }
 
-    public Date getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
-    public Date getLastUpdateDate() {
+    public LocalDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }
 

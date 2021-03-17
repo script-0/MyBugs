@@ -8,20 +8,15 @@ package controllers;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import models.entities.BugEntity;
 
 /**
@@ -58,7 +53,7 @@ public class BugController implements Initializable {
     public void loadBug(BugEntity bug) {
         this.bugData = bug;
         setBugLabel(bug.getLabel());
-        setLabelDate(bug.getCreationDate());
+        setLabelDate(bug.getLastUpdateDate());
         if (bug.isResolved()) {
             checkBug.getStyleClass().add("resolved");
         }
@@ -69,7 +64,7 @@ public class BugController implements Initializable {
         return true;
     }
 
-    public boolean setLabelDate(Date date) {
+    public boolean setLabelDate(LocalDateTime date) {
         dateBug.setText(Utils.Utils.format(date));
         return true;
     }
