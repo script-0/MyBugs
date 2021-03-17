@@ -70,15 +70,23 @@ public class BugController implements Initializable {
     }
 
     @FXML
-    void displayBug() {
-        //if (bugDetails == null) {
-        //Loading Bug Details interface
+    void view(){
+        displayBug(true);
+    }
+    
+    @FXML
+    void edit(){
+        displayBug(false);
+    }
+    
+    void displayBug(boolean isView) {
+        System.out.println("Loading Bug Details Interface ...");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/bugDetails.fxml"));
             AnchorPane bugDetails = (AnchorPane) loader.load();
             BugDetailsController bugDetailsControl = loader.getController();
-            bugDetailsControl.loadBug(bugData);
-            System.out.println("Loading Bug Details Interface success");           
+            bugDetailsControl.loadBug(bugData, isView);
+            System.out.println("[Success] Loading Bug Details Interface");           
             bugDetailsControl.show();
             
         } catch (IOException ex) {

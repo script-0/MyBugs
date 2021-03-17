@@ -23,8 +23,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="26.0" prefWidth="242.0" spacing="10.0" styleClass="bugControls" HBox.hgrow="NEVER">
                <children>
-                  <FontAwesomeIconView fx:id="viewBug" fill="WHITE" glyphName="EYE" size="25" styleClass="icons" onMouseClicked="#displayBug" />
-                  <FontAwesomeIconView fx:id="editBug" fill="WHITE" glyphName="EDIT" size="22" styleClass="icons" onMouseClicked="#displayBug" />
+                  <FontAwesomeIconView fx:id="viewBug" fill="WHITE" glyphName="EYE" size="25" styleClass="icons" onMouseClicked="#view" />
+                  <FontAwesomeIconView fx:id="editBug" fill="WHITE" glyphName="EDIT" size="22" styleClass="icons" onMouseClicked="#edit" />
                   <FontAwesomeIconView fx:id="checkBug" fill="TRANSPARENT" glyphName="CHECK" size="22" stroke="#21f405" />
                   <Label fx:id="dateBug" styleClass="bugDate" text="24-12-2020 11:56:52" textFill="WHITE" HBox.hgrow="NEVER">
                      <font>

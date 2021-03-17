@@ -81,7 +81,11 @@ public class BugDetailsController implements Initializable {
         bug = new BugEntity();
     }
 
-    public void loadBug(BugEntity bug) {
+    public void loadBug(BugEntity bug, boolean isView) {
+        if(isView){
+            save.setVisible(false);
+            cancel.setText("Close");
+        }
         this.bug = bug;
         this.labelTextField.setText(bug.getLabel());
         this.solutionArea.setText(bug.getSolution());

@@ -200,8 +200,6 @@ public class AppDesignController implements Initializable {
                 });
                 menuWidth = menu.getPrefWidth();  
                 menuHeight = menu.getPrefHeight();
-
-                System.out.println("Loading Menu success [width = " + menuWidth + ", height = " + menuHeight + "]");
             } catch (IOException ex) {
                 Logger.getLogger(AppDesignController.class.getName()).log(Level.SEVERE, null, ex);
                 //Loading of Menu Interface failed
@@ -388,6 +386,8 @@ public class AppDesignController implements Initializable {
             MyBugs.bugs.clear();
             //Interrogate DB.
             MyBugs.bugs.addAll(bugServices.search(query));
+            System.out.println("[Success] Searching for bugs");
+            log.setText("Displaying Results ..");
             if(MyBugs.bugs.size() == 0){
                 resultBox.getChildren().clear();
                 resultBox.getChildren().add(placeHolderSearchBox);
@@ -395,7 +395,7 @@ public class AppDesignController implements Initializable {
             }else{
                 initPagination();
             }
-            log.setText("All traitements are done");            
+            log.setText("All traitements are done");
             searchText.setDisable(false);
             System.gc();
         }
